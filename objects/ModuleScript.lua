@@ -5,6 +5,7 @@ function ModuleScript.new(instance)
     local closure = getScriptClosure(instance)
 
     if closure then
+        print(`Closure from: {instance:GetFullName()} detected.`)
         moduleScript.Constants = getConstants(closure)
         moduleScript.Protos = getProtos(closure)
     end
