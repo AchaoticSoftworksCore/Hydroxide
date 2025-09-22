@@ -8,6 +8,9 @@ function ModuleScript.new(instance)
         print(`Closure from: {instance:GetFullName()} detected.`)
         moduleScript.Constants = getConstants(closure)
         moduleScript.Protos = getProtos(closure)
+    else
+        moduleScript.Constants = {}
+        moduleScript.Protos = {}
     end
 
     moduleScript.Instance = instance
