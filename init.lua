@@ -286,8 +286,12 @@ if readFile and writeFile then
 end
 
 useMethods(import("methods/string"))
+print'methods/string imported'
 useMethods(import("methods/table"))
+print'methods/table imported'
 useMethods(import("methods/userdata"))
+print'methods/userdata imported'
 useMethods(import("methods/environment"))
+print'methods/environment imported'
 
---import("ui/main")
+import("ui/main")
