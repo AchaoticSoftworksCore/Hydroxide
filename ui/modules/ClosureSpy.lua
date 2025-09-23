@@ -270,9 +270,14 @@ function Log.new(hook)
     local blockAnimation = TweenService:Create(buttonName, constants.fadeLength, { TextColor3 = constants.blockedColor })
     local ignoreAnimation = TweenService:Create(buttonName, constants.fadeLength, { TextColor3 = constants.ignoredColor })
 
+    --[[
     buttonInfo.Protos.Text = #getProtos(original)
     buttonInfo.Upvalues.Text = #getUpvalues(original)
     buttonInfo.Constants.Text = #getConstants(original)
+    ]]
+    buttonInfo.Protos.Text = 'ERROR'
+    buttonInfo.Upvalues.Text = 'ERROR'
+    buttonInfo.Constants.Text = 'ERROR'
 
     button.Name = closure.Name
     buttonName.Text = closure.Name

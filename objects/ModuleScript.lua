@@ -4,10 +4,17 @@ function ModuleScript.new(instance)
     local moduleScript = {}
     local closure = getScriptClosure(instance)
 
+    if closure then
+        print(`Closure from: {instance:GetFullName()} detected.`)
+        moduleScript.Constants = getConstants(closure)
+        moduleScript.Protos = getProtos(closure)
+    else
+        moduleScript.Constants = {}
+        moduleScript.Protos = {}
+    end
+
     moduleScript.Instance = instance
-    moduleScript.Constants = getConstants(closure)
-    moduleScript.Protos = getProtos(closure)
-    --moduleScript.ReturnValue = require(instance) // causes detection
+    moduleScript.ReturnValue = require(instance) --// causes detection
 
     return moduleScript
 end
