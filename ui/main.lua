@@ -59,33 +59,7 @@ function oh.getStatus()
 	return Status.Text:gsub('• Status: ', '')
 end
 
-local dragging
-local dragStart
-local startPos
 
-Drag.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		local dragEnded 
-
-		dragging = true
-		dragStart = input.Position
-		startPos = Base.Position
-
-		dragEnded = input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-				dragEnded:Disconnect()
-			end
-		end)
-	end
-end)
-
-oh.Events.Drag = UserInput.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
-		local delta = input.Position - dragStart
-		Base.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-	end
-end)
 
 Open.MouseButton1Click:Connect(function()
 	Open:TweenPosition(constants.conceal, "Out", "Quad", 0.15)
