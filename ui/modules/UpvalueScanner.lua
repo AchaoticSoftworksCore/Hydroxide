@@ -246,6 +246,7 @@ function Log.new(closure)
 
         logHeight = logHeight + upvalueLog.AbsoluteSize.Y + 5
         log.Upvalues[i] = upvalueLog
+        task.wait()
     end
 
     instance.Size = UDim2.new(1, 0, 0, logHeight)
@@ -293,10 +294,12 @@ local function addUpvalues()
             end
 
             showResultLabel = true
+            task.wait()
         end
 
         for _i, closure in pairs(unnamedFunctions) do
             Log.new(closure)
+            task.wait()
         end
 
         ResultStatus.Visible = showResultLabel
